@@ -9,8 +9,24 @@
     <title>Dashboard</title>
 </head>
 <body>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/dashboard" style="font-weight:bold">HOME</a>
+            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
+            aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavId">
+            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Logout</a>
+                </li>
+            </ul>
+            </div>
+        </div>
+    </nav>
     <div class="header">
-        <span class="welcome-message">Welcome, {{ session['current_user']['first_name'] }}</span>
+        <span class="welcome-message text-uppercase" style ="font-size: xx-large; font-weight: bold;">Welcome, {{ session['current_user']['first_name'] }}</span>
         <div class="header-links">
             <a href="/logout">Log Out</a>
         </div>
@@ -18,4 +34,16 @@
     <div class="outer-container">
         <h2>Cool Stuff Comin'</h2>
     </div>
+    <div class="container">
+        <table class="table table-hover col dashboard-style table-dark">
+            <thead>
+                <tr>
+                    <th>Priorities</th>
+                    <th>Tags</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+    </div>
+    
 </body>

@@ -6,14 +6,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.tailwindcss.com"></script>
     <title>Dashboard</title>
 </head>
 <body>
-    <div class="header">
-        <span class="welcome-message">Welcome, {{ session['current_user']['first_name'] }}</span>
-        <div class="header-links">
-            <a href="/logout">Log Out</a>
+    <div class='z-10 w-full h-[95px] flex justify-center items-center px-4 bg-transparent '>
+        
+            <ul class='flex'>
+                <li class='text-2xl p-2 bg-sky-400 rounded-full mx-3 hover:rounded-full hover:border-2 hover:border-[#00a6be]'>
+                    <a href="/">Dashboard</a>
+                </li>
+                <li class='text-2xl p-2 mx-3 bg-sky-400 rounded-full hover:rounded-full hover:border-2 hover:border-[#00a6be]'>
+                    <a href="/about">Something</a>
+                </li>
+                <div class='text-black text-5xl font-bold mx-3'>
+                    Do it to it
+                </div>
+                <li class='text-2xl p-2 mx-3 bg-sky-400 rounded-full hover:rounded-full hover:border-2 hover:border-[#00a6be]'>
+                    <a href="/menu">Something</a>
+                </li>
+                <li class='text-2xl p-2 mx-3 bg-sky-400 rounded-full hover:rounded-full hover:border-2 hover:border-[#00a6be]'>
+                    <a href="/location">Something</a>
+                </li>
+                <li class='text-2xl p-2 mx-3 bg-sky-400 rounded-full hover:rounded-full hover:border-2 hover:border-[#00a6be]'>
+                    <a href="/logout">Logout</a>
+                </li>
+            </ul>
+        
+    </div>
+    <span class="flex justify-center text-2xl font-bold m-4">Welcome, {{ session['current_user']['first_name'] }}</span>
+    <div class="flex justify-center">
+        <h1 class="text-red-600 text-2xl">ADD Form</h1>
+    </div>
+    
+    <div class="worko-tabs">
+        <input class="state" type="radio" title="tab-one" name="tabs-state" id="tab-one" checked />
+        <input class="state" type="radio" title="tab-two" name="tabs-state" id="tab-two" />
+        <input class="state" type="radio" title="tab-three" name="tabs-state" id="tab-three" />
+        <input class="state" type="radio" title="tab-four" name="tabs-state" id="tab-four" />
+    
+        <div class="tabs flex-tabs">
+            <label for="tab-one" id="tab-one-label" class="tab">Tab One</label>
+            <label for="tab-two" id="tab-two-label" class="tab">Tab Two</label>
+            <label for="tab-three" id="tab-three-label" class="tab">Tab Three</label>
+            <label for="tab-four" id="tab-four-label" class="tab">Tab Four</label>
+    
+    
+            <div id="tab-one-panel" class="panel active">
+              <h3>Responsive CSS Tabs - Flexbox</h3>
+              <p>CSS only tabs built using flexbox, when the viewport drops below 600px wide the tabs turn into an accordion by chaging the flex order of the elements.  Will need to alter css if more tabs are added.  each tab could be a seperate list of items </p>
+            </div>
+            <div id="tab-two-panel" class="panel">
+                Tab two content
+            </div>
+            <div id="tab-three-panel" class="panel">
+                Tab three content
+            </div>
+            <div id="tab-four-panel" class="panel">
+                Tab four content
+            </div>
         </div>
+    
     </div>
     <div class="outer-container">
         <h2>Cool Stuff Comin'</h2>

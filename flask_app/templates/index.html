@@ -6,11 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.tailwindcss.com"></script>
     <title>Register or Log In</title>
-</head>
-<body>
-    <div class="header">
-        <h1>Welcome</h1>
+</head>  
+<body class="bg-gray-400">
+    <img class="position: fixed -z-50 object-cover bg-fixed" src="{{url_for('static', filename='dowork.jpg')}}"></img>
+    <div class="header flex justify-center p-4">
+        <h1 class="text-5xl font-bold">Welcome</h1>
     </div>
     <div class="flash-messages-container">
         {% with messages = get_flashed_messages() %}
@@ -21,69 +23,69 @@
             {% endif %}
         {% endwith %}
     </div>
-    <div class="outer-container">
-        <div class="form-container">
-            <h2>Register</h2>
-            <form action="/register" method="post">
-                <div class="form-group">
-                    <label for="first_name">First Name:</label>
+    <div class="flex">
+        <div class="container m-4 border-4 border-slate-900 rounded-2xl shadow-xl">
+            <h2 class="flex justify-center text-4xl font-bold">Register</h2>
+            <form action="/register" method="post" class="w-2/3">
+                <div class="form-group shadow-xl">
+                    <label class="text-2xl font-bold" for="first_name">First Name:</label>
                     {% if (session['data']) and (session['data']['first_name']) %}
                         <input type="text" class="form-control" name="first_name" value="{{ session['data']['first_name'] }}">
                     {% else %}
                         <input type="text" class="form-control" name="first_name">
                     {% endif %}
                 </div>
-                <div class="form-group">
-                    <label for="last_name">Last Name:</label>
+                <div class="form-group shadow-xl">
+                    <label class="text-2xl font-bold" for="last_name">Last Name:</label>
                     {% if (session['data']) and (session['data']['last_name']) %}
                         <input type="text" class="form-control" name="last_name" value="{{ session['data']['last_name'] }}">
                     {% else %}
                         <input type="text" class="form-control" name="last_name">
                     {% endif %}
                 </div>
-                <div class="form-group">
-                    <label for="email">Email:</label>
+                <div class="form-group shadow-xl">
+                    <label class="text-2xl font-bold" for="email">Email:</label>
                     {% if (session["data"]) and (session["data"]["email"]) %}
                         <input type="email" class="form-control" name="email" value="{{ session['data']['email'] }}">
                     {% else %}
                         <input type="email" class="form-control" name="email">
                     {% endif %}
                 </div>
-                <div class="form-group">
-                    <label for="password">Password:</label>
+                <div class="form-group shadow-xl">
+                    <label class="text-2xl font-bold" for="password">Password:</label>
                     {% if (session["data"]) and (session["data"]["password"]) %}
                         <input type="password" class="form-control" name="password" value="{{ session['data']['password'] }}">
                     {% else %}
                         <input type="password" class="form-control" name="password">
                     {% endif %}
                 </div>
-                <div class="form-group">
-                    <label for="confirm_password">Confirm Password:</label>
+                <div class="form-group shadow-xl">
+                    <label class="text-2xl font-bold" for="confirm_password">Confirm Password:</label>
                     <input type="password" class="form-control" name="confirm_password">
                 </div>
-                <button type="submit" class="btn btn-primary">Register</button>
+                <button type="submit" class="px-5 py-2.5 text-sm font-medium text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mb-4 shadow-xl">Register</button>
             </form>
         </div>
-        <div class="form-container">
-            <h2>Login</h2>
-            <form action="/login" method="post">
-                <div class="form-group">
-                    <label for="email">Email:</label>
+        <div class="container m-4 border-4 border-slate-900 rounded-2xl shadow-xl">
+            <h2 class="flex justify-center text-4xl font-bold">Login</h2>
+            <form action="/login" method="post" class="w-2/3">
+                <div class="form-group shadow-xl">
+                    <label class="text-2xl font-bold" for="email">Email:</label>
                     {% if (session["data"]) and (session["data"]["email"] and not session["registering"]) %}
                         <input type="email" class="form-control" name="email" value="{{ session['data']['email'] }}">
                     {% else %}
                         <input type="email" class="form-control" name="email">
                     {% endif %}
                 </div>
-                <div class="form-group">
-                    <label for="password">Password:</label>
+                <div class="form-group shadow-xl">
+                    <label class="text-2xl font-bold" for="password">Password:</label>
                     {% if (session["data"]) and (session["data"]["password"] and not session["registering"]) %}
                         <input type="password" class="form-control" name="password" value="{{ session['data']['password'] }}">
                     {% else %}
                         <input type="password" class="form-control" name="password">
                     {% endif %}
                 </div>
-                <button type="submit" class="btn btn-primary">Login</button>
+                <button type="submit" class="px-5 py-2.5 text-sm font-medium text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 shadow-xl">Login</button>
             </form>
         </div>
     </div>

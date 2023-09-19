@@ -7,12 +7,13 @@ class Category:
         self.name = data['name']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
+        self.user_id = data['user_id']
 
     @classmethod
     def save(cls, data):
         query = """
-        INSERT INTO categories(name)
-        VALUES ( %(name)s)
+        INSERT INTO categories(name, user_id)
+        VALUES ( %(name)s, %(user_id)s)
         """
         return connectToMySQL(cls.DB).query_db(query, data)
 

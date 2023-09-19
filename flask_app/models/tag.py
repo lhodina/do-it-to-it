@@ -8,12 +8,13 @@ class Tag:
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
         self.category_id = data['category_id']
+        self.user_id = data['user_id']
 
     @classmethod
     def save(cls, data):
         query = """
-        INSERT INTO tags(name, category_id)
-        VALUES ( %(name)s, %(category_id)s)
+        INSERT INTO tags(name, category_id, use_id)
+        VALUES ( %(name)s, %(category_id)s, %(user_id)s)
         """
         return connectToMySQL(cls.DB).query_db(query, data)
 

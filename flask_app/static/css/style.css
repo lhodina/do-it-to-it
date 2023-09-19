@@ -1,0 +1,139 @@
+/* Android 2.3 :checked fix */
+@keyframes fake {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+body {
+  animation: fake 1s infinite;
+}
+
+.worko-tabs {
+  margin: 20px;
+  width: 80%;
+
+  .state {
+    position: absolute;
+    left: -10000px;
+  }
+
+  .flex-tabs {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    .tab {
+      flex-grow: 1;
+      max-height: 40px;
+    }
+
+    .panel {
+      background-color: #fff;
+      padding: 20px;
+      min-height: 300px;
+      display: none;
+      width: 100%;
+      flex-basis: auto;
+    }
+  }
+
+  .tab {
+    display: inline-block;
+    padding: 10px;
+    vertical-align: top;
+    background-color: #eee;
+    cursor: hand;
+    cursor: pointer;
+    border-left: 10px solid #ccc;
+
+    &:hover {
+      background-color: #fff;
+    }
+  }
+}
+
+#tab-1:checked~.tabs #tab-1-label,
+#tab-2:checked~.tabs #tab-2-label,
+#tab-3:checked~.tabs #tab-3-label,
+#tab-4:checked~.tabs #tab-4-label {
+  background-color: #fff;
+  cursor: default;
+  border-left-color: #69be28;
+}
+
+#tab-1:checked~.tabs #tab-1-panel,
+#tab-2:checked~.tabs #tab-2-panel,
+#tab-3:checked~.tabs #tab-3-panel,
+#tab-4:checked~.tabs #tab-4-panel {
+  display: block;
+}
+
+@media (max-width: 600px) {
+  .flex-tabs {
+    flex-direction: column;
+
+    .tab {
+      background: #fff;
+      border-bottom: 1px solid #ccc;
+
+      &:last-of-type {
+        border-bottom: none;
+      }
+    }
+
+    #tab-1-label {
+      order: 1;
+    }
+
+    #tab-2-label {
+      order: 3;
+    }
+
+    #tab-3-label {
+      order: 5;
+    }
+
+    ;
+
+    #tab-4-label {
+      order: 7;
+    }
+
+    ;
+
+    #tab-1-panel {
+      order: 2;
+    }
+
+    #tab-2-panel {
+      order: 4;
+    }
+
+    #tab-3-panel {
+      order: 6;
+    }
+
+    #tab-4-panel {
+      order: 8;
+    }
+  }
+
+  #tab-1:checked~.tabs #tab-1-label,
+  #tab-2:checked~.tabs #tab-2-label,
+  #tab-3:checked~.tabs #tab-3-label,
+  #tab-4:checked~.tabs #tab-4-label {
+    border-bottom: none;
+  }
+
+  #tab-1:checked~.tabs #tab-1-panel,
+  #tab-2:checked~.tabs #tab-2-panel,
+  #tab-3:checked~.tabs #tab-3-panel,
+  #tab-4:checked~.tabs #tab-4-panel {
+    border-bottom: 1px solid #ccc;
+  }
+}

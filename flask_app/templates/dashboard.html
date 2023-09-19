@@ -8,6 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.tailwindcss.com"></script>
     <title>Dashboard</title>
 </head>
 
@@ -35,37 +36,91 @@
         <div class="header-links">
             <a href="/logout">Log Out</a>
         </div>
-    </div>
-    <div class="outer-container">
-        <h2>Cool Stuff Comin'</h2>
-    </div>
-    <div class="container">
-        <div class="accordion" id="accordionBasic">
-            {% for items in all_categories%}
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="heading{{items.id}}">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapse{{items.id}}" aria-expanded="true"
-                        aria-controls="collapse{{items.id}}">
-                        {{items.name}}
-                    </button>
-                </h2>
-                <div id="collapse{{items.id}}" class="accordion-collapse collapse" aria-labelledby="heading{{items}}"
-                    data-bs-parent="#accordionBasic">
-                    <div class="accordion-body">
-                        {% for tags in all_tags %}
-                        {% if(tags.category_id == items.id) %}
-                        <button class="">{{tags.name}}</button>
+        <div class='z-10 w-full h-[95px] flex justify-center items-center px-4 bg-transparent '>
+
+            <ul class='flex'>
+                <li
+                    class='text-2xl p-2 bg-sky-400 rounded-full mx-3 hover:rounded-full hover:border-2 hover:border-[#00a6be]'>
+                    <a href="/">Dashboard</a>
+                </li>
+                <li
+                    class='text-2xl p-2 mx-3 bg-sky-400 rounded-full hover:rounded-full hover:border-2 hover:border-[#00a6be]'>
+                    <a href="/about">Something</a>
+                </li>
+                <div class='text-black text-5xl font-bold mx-3'>
+                    Do it to it
+                </div>
+                <li
+                    class='text-2xl p-2 mx-3 bg-sky-400 rounded-full hover:rounded-full hover:border-2 hover:border-[#00a6be]'>
+                    <a href="/location">Something</a>
+                </li>
+                <li
+                    class='text-2xl p-2 mx-3 bg-sky-400 rounded-full hover:rounded-full hover:border-2 hover:border-[#00a6be]'>
+                    <a href="/logout">Logout</a>
+                </li>
+            </ul>
+        </div>
+        <span class="flex justify-center text-2xl font-bold m-4">Welcome, {{ session['current_user']['first_name']
+            }}</span>
+
+        <div class="flex justify-center">
+            <h1 class="text-red-600 text-2xl">ADD Form</h1>
+        </div>
+
+        <div class="worko-tabs flex justify-center">
+
+            <div class="tabs flex-tabs">
+                {% for item in all_categories %}
+                <input class="state" type="radio" title="tab-{{item.id}}" name="tabs-state" id="tab-{{item.id}}"
+                    checked />
+                {% endfor %}
+
+                <div class="tabs flex-tabs">
+                    {% for item in all_categories %}
+                    <label for="tab-{{item.id}}" id="tab-{{item.id}}-label" class="tab font-bold">{{item.name}}</label>
+                    {% endfor %}
+
+                    {% for item in all_categories %}
+                    <div id="tab-{{item.id}}-panel" class="panel active">
+                        {% for tags in all_tags%}
+                        {% if( item.id == tags.category_id)%}
+                        <p>{{tags.name}}</p>
                         {% endif %}
                         {% endfor %}
-                        <button class="">Create new Tag</button>
                     </div>
+                    {% endfor %}
                 </div>
             </div>
-            {% endfor %}
         </div>
+
+
+
+        <div class="outer-container flex justify-center m-4">
+            <h2 class="text-4xl font-bold">Top Priorities</h2>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+            crossorigin="anonymous"></script>
+        <table class="table table-hover col dashboard-style table-dark">
+            <thead>
+                <tr>
+                    <th>Priorities</th>
+                    <th>Tags</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td> Priority text</td>
+                    <td> Priority tags</td>
+                    <td> Priority level</td>
+                    <td>
+                        <a href="/dashboard" class="btn btn-success">Completed</a>
+                    </td>
+
+                </tr>
+            </tbody>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
 </body>

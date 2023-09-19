@@ -28,3 +28,22 @@ class Priority:
         for result in results:
             all_priorities.append(result)
         return all_priorities
+
+    @classmethod
+    def update(cls,form_data):
+        query = """
+                UPDATE priorities
+                SET text = %(text)s,
+                level = %(level)s,
+                updated_at = now()
+                WHERE id = %(id)s;
+                """
+        return connectToMySQL(cls.DB).query_db(query,form_data)
+    
+    @classmethod
+    def destroy(cls,data):
+        query = """
+                DELETE FROM priorities
+                WHERE id = %(id)s;
+                """
+        return connectToMySQL(cls.DB).query_db(query,data)

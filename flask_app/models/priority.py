@@ -8,12 +8,13 @@ class Priority:
         self.level = data['level']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
+        self.user_id = data['user_id']
 
     @classmethod
     def save(cls, data):
         query = """
-        INSERT INTO priorities(text, level)
-        VALUES ( %(text)s, %(level)s)
+        INSERT INTO priorities(text, level, user_id)
+        VALUES ( %(text)s, %(level)s, %(user_id)s)
         """
         return connectToMySQL(cls.DB).query_db(query, data)
 

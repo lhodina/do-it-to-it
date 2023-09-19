@@ -11,7 +11,7 @@
 </head>
 <body>
     <div class='z-10 w-full h-[95px] flex justify-center items-center px-4 bg-transparent '>
-        
+
             <ul class='flex'>
                 <li class='text-2xl p-2 bg-sky-400 rounded-full mx-3 hover:rounded-full hover:border-2 hover:border-[#00a6be]'>
                     <a href="/">Dashboard</a>
@@ -32,26 +32,26 @@
                     <a href="/logout">Logout</a>
                 </li>
             </ul>
-        
+
     </div>
     <span class="flex justify-center text-2xl font-bold m-4">Welcome, {{ session['current_user']['first_name'] }}</span>
     <div class="flex justify-center">
         <h1 class="text-red-600 text-2xl">ADD Form</h1>
     </div>
-    
+
     <div class="worko-tabs">
         <input class="state" type="radio" title="tab-one" name="tabs-state" id="tab-one" checked />
         <input class="state" type="radio" title="tab-two" name="tabs-state" id="tab-two" />
         <input class="state" type="radio" title="tab-three" name="tabs-state" id="tab-three" />
         <input class="state" type="radio" title="tab-four" name="tabs-state" id="tab-four" />
-    
+
         <div class="tabs flex-tabs">
             <label for="tab-one" id="tab-one-label" class="tab">Tab One</label>
             <label for="tab-two" id="tab-two-label" class="tab">Tab Two</label>
             <label for="tab-three" id="tab-three-label" class="tab">Tab Three</label>
             <label for="tab-four" id="tab-four-label" class="tab">Tab Four</label>
-    
-    
+
+
             <div id="tab-one-panel" class="panel active">
               <h3>Responsive CSS Tabs - Flexbox</h3>
               <p>CSS only tabs built using flexbox, when the viewport drops below 600px wide the tabs turn into an accordion by chaging the flex order of the elements.  Will need to alter css if more tabs are added.  each tab could be a seperate list of items </p>
@@ -66,13 +66,13 @@
                 Tab four content
             </div>
         </div>
-    
+
     </div>
     <div class="outer-container">
         <h2>Cool Stuff Comin'</h2>
     </div>
     <div class="container">
-        <table class="table table-hover col dashboard-style table-dark"> 
+        <table class="table table-hover col dashboard-style table-dark">
             <thead>
                 <tr>
                     <th>Priorities</th>
@@ -83,15 +83,15 @@
             </thead>
             <tbody>
                 <tr>
-                    <td> Priority text</td> <!-- {{priority.text}}-->
-                    <td> Priority tags</td> <!-- {{priority.tags}}-->
-                    <td> Priority level</td> <!-- {{priority.level}}-->
-                    <td > 
+                    <td> Priority text</td>
+                    <td> Priority tags</td>
+                    <td> Priority level</td>
+                    <td >
                         <a href="/dashboard" class="btn btn-success">Completed</a>
                     </td>
 
                 </tr>
             </tbody>
     </div>
-    
+
 </body>

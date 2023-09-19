@@ -1,32 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
     <title>Dashboard</title>
 </head>
+
 <body>
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
         <div class="container">
             <a class="navbar-brand" href="/dashboard" style="font-weight:bold">HOME</a>
-            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
-            aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
+                data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="collapsibleNavId">
-            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link" href="/logout">Logout</a>
-                </li>
-            </ul>
+                <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">Logout</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>
     <div class="header">
-        <span class="welcome-message text-uppercase" style ="font-size: xx-large; font-weight: bold;">Welcome, {{ session['current_user']['first_name'] }}</span>
+        <span class="welcome-message text-uppercase" style="font-size: xx-large; font-weight: bold;">Welcome, {{
+            session['current_user']['first_name'] }}</span>
         <div class="header-links">
             <a href="/logout">Log Out</a>
         </div>
@@ -35,15 +40,51 @@
         <h2>Cool Stuff Comin'</h2>
     </div>
     <div class="container">
-        <table class="table table-hover col dashboard-style table-dark">
-            <thead>
-                <tr>
-                    <th>Priorities</th>
-                    <th>Tags</th>
-                    <th>Date</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
+        <div class="accordion" id="accordionBasic">
+            {% for items in all_categories%}
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading{{items.id}}">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapse{{items.id}}" aria-expanded="true"
+                        aria-controls="collapse{{items.id}}">
+                        {{items.name}}
+                    </button>
+                </h2>
+                <div id="collapse{{items.id}}" class="accordion-collapse collapse" aria-labelledby="heading{{items}}"
+                    data-bs-parent="#accordionBasic">
+                    <div class="accordion-body">
+                        {% for tags in all_tags %}
+                        {% if(tags.category_id == items.id) %}
+                        <button class="">{{tags.name}}</button>
+                        {% endif %}
+                        {% endfor %}
+                        <button class="">Create new Tag</button>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            <!-- <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                    aria-expanded="true" aria-controls="collapseOne">
+                    Accordion Item #1
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                data-bs-parent="#accordionBasic">
+                <div class="accordion-body">
+                    <strong>This is the first item's accordion body.</strong> It is hidden by default, until the
+                    collapse plugin adds the appropriate classes that we use to style each element. These classes
+                    control the overall appearance, as well as the showing and hiding via CSS transitions. You can
+                    modify any of this with custom CSS or overriding our default variables. It's also worth noting that
+                    just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit
+                    overflow.
+                </div>
+            </div>
+        </div> -->
+        </div>
     </div>
-    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
 </body>

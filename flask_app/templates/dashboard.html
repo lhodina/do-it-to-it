@@ -49,18 +49,15 @@
                     Do it to it
                 </div>
                 <li class='text-2xl p-2 mx-3 bg-sky-400 rounded-full hover:rounded-full hover:border-2 hover:border-[#00a6be]'>
-                    <a href="/menu">Something</a>
-                </li>
-                <li class='text-2xl p-2 mx-3 bg-sky-400 rounded-full hover:rounded-full hover:border-2 hover:border-[#00a6be]'>
                     <a href="/location">Something</a>
                 </li>
                 <li class='text-2xl p-2 mx-3 bg-sky-400 rounded-full hover:rounded-full hover:border-2 hover:border-[#00a6be]'>
                     <a href="/logout">Logout</a>
                 </li>
             </ul>
-
     </div>
     <span class="flex justify-center text-2xl font-bold m-4">Welcome, {{ session['current_user']['first_name'] }}</span>
+
     <div class="flex justify-center">
         <h1 class="text-red-600 text-2xl">ADD Form</h1>
     </div>
@@ -70,12 +67,20 @@
         <input class="state" type="radio" title="tab-two" name="tabs-state" id="tab-two" />
         <input class="state" type="radio" title="tab-three" name="tabs-state" id="tab-three" />
         <input class="state" type="radio" title="tab-four" name="tabs-state" id="tab-four" />
+        <input class="state" type="radio" title="tab-five" name="tabs-state" id="tab-five" />
+        <input class="state" type="radio" title="tab-six" name="tabs-state" id="tab-six" />
+        <input class="state" type="radio" title="tab-seven" name="tabs-state" id="tab-seven" />
+        <input class="state" type="radio" title="tab-eight" name="tabs-state" id="tab-eight" />
 
         <div class="tabs flex-tabs">
-            <label for="tab-one" id="tab-one-label" class="tab">Tab One</label>
-            <label for="tab-two" id="tab-two-label" class="tab">Tab Two</label>
-            <label for="tab-three" id="tab-three-label" class="tab">Tab Three</label>
-            <label for="tab-four" id="tab-four-label" class="tab">Tab Four</label>
+            <label for="tab-one" id="tab-one-label" class="tab font-bold">Technologies</label>
+            <label for="tab-two" id="tab-two-label" class="tab font-bold">Specializations</label>
+            <label for="tab-three" id="tab-three-label" class="tab font-bold">Industries</label>
+            <label for="tab-four" id="tab-four-label" class="tab font-bold">Companies</label>
+            <label for="tab-five" id="tab-five-label" class="tab font-bold">Locations</label>
+            <label for="tab-six" id="tab-six-label" class="tab font-bold">Interviews</label>
+            <label for="tab-seven" id="tab-seven-label" class="tab font-bold">Jobs</label>
+            <label for="tab-eight" id="tab-eight-label" class="tab font-bold">Contacts</label>
 
 
             <div id="tab-one-panel" class="panel active">
@@ -91,56 +96,25 @@
             <div id="tab-four-panel" class="panel">
                 Tab four content
             </div>
+            <div id="tab-five-panel" class="panel">
+                Tab five content
+            </div>
+            <div id="tab-six-panel" class="panel">
+                Tab six content
+            </div>
+            <div id="tab-seven-panel" class="panel">
+                Tab seven content
+            </div>
+            <div id="tab-eight-panel" class="panel">
+                Tab eight content
+            </div>
         </div>
     </div>
-    <div class="outer-container">
-        <h2>Cool Stuff Comin'</h2>
+
+    <div class="outer-container flex justify-center m-4">
+        <h2 class="text-4xl font-bold">Top Priorities</h2>
     </div>
-    <div class="container">
-        <div class="accordion" id="accordionBasic">
-            {% for items in all_categories%}
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="heading{{items.id}}">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapse{{items.id}}" aria-expanded="true"
-                        aria-controls="collapse{{items.id}}">
-                        {{items.name}}
-                    </button>
-                </h2>
-                <div id="collapse{{items.id}}" class="accordion-collapse collapse" aria-labelledby="heading{{items}}"
-                    data-bs-parent="#accordionBasic">
-                    <div class="accordion-body">
-                        {% for tags in all_tags %}
-                        {% if(tags.category_id == items.id) %}
-                        <button class="">{{tags.name}}</button>
-                        {% endif %}
-                        {% endfor %}
-                        <button class="">Create new Tag</button>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-            <!-- <div class="accordion-item">
-            <h2 class="accordion-header" id="headingOne">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
-                    aria-expanded="true" aria-controls="collapseOne">
-                    Accordion Item #1
-                </button>
-            </h2>
-            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-                data-bs-parent="#accordionBasic">
-                <div class="accordion-body">
-                    <strong>This is the first item's accordion body.</strong> It is hidden by default, until the
-                    collapse plugin adds the appropriate classes that we use to style each element. These classes
-                    control the overall appearance, as well as the showing and hiding via CSS transitions. You can
-                    modify any of this with custom CSS or overriding our default variables. It's also worth noting that
-                    just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit
-                    overflow.
-                </div>
-            </div>
-        </div> -->
-        </div>
-    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>

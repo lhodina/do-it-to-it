@@ -23,18 +23,15 @@
                     Do it to it
                 </div>
                 <li class='text-2xl p-2 mx-3 bg-sky-400 rounded-full hover:rounded-full hover:border-2 hover:border-[#00a6be]'>
-                    <a href="/menu">Something</a>
-                </li>
-                <li class='text-2xl p-2 mx-3 bg-sky-400 rounded-full hover:rounded-full hover:border-2 hover:border-[#00a6be]'>
                     <a href="/location">Something</a>
                 </li>
                 <li class='text-2xl p-2 mx-3 bg-sky-400 rounded-full hover:rounded-full hover:border-2 hover:border-[#00a6be]'>
                     <a href="/logout">Logout</a>
                 </li>
             </ul>
-
     </div>
     <span class="flex justify-center text-2xl font-bold m-4">Welcome, {{ session['current_user']['first_name'] }}</span>
+
     <div class="flex justify-center">
         <h1 class="text-red-600 text-2xl">ADD Form</h1>
     </div>
@@ -44,12 +41,20 @@
         <input class="state" type="radio" title="tab-two" name="tabs-state" id="tab-two" />
         <input class="state" type="radio" title="tab-three" name="tabs-state" id="tab-three" />
         <input class="state" type="radio" title="tab-four" name="tabs-state" id="tab-four" />
+        <input class="state" type="radio" title="tab-five" name="tabs-state" id="tab-five" />
+        <input class="state" type="radio" title="tab-six" name="tabs-state" id="tab-six" />
+        <input class="state" type="radio" title="tab-seven" name="tabs-state" id="tab-seven" />
+        <input class="state" type="radio" title="tab-eight" name="tabs-state" id="tab-eight" />
 
         <div class="tabs flex-tabs">
-            <label for="tab-one" id="tab-one-label" class="tab">Tab One</label>
-            <label for="tab-two" id="tab-two-label" class="tab">Tab Two</label>
-            <label for="tab-three" id="tab-three-label" class="tab">Tab Three</label>
-            <label for="tab-four" id="tab-four-label" class="tab">Tab Four</label>
+            <label for="tab-one" id="tab-one-label" class="tab font-bold">Technologies</label>
+            <label for="tab-two" id="tab-two-label" class="tab font-bold">Specializations</label>
+            <label for="tab-three" id="tab-three-label" class="tab font-bold">Industries</label>
+            <label for="tab-four" id="tab-four-label" class="tab font-bold">Companies</label>
+            <label for="tab-five" id="tab-five-label" class="tab font-bold">Locations</label>
+            <label for="tab-six" id="tab-six-label" class="tab font-bold">Interviews</label>
+            <label for="tab-seven" id="tab-seven-label" class="tab font-bold">Jobs</label>
+            <label for="tab-eight" id="tab-eight-label" class="tab font-bold">Contacts</label>
 
 
             <div id="tab-one-panel" class="panel active">
@@ -65,12 +70,25 @@
             <div id="tab-four-panel" class="panel">
                 Tab four content
             </div>
+            <div id="tab-five-panel" class="panel">
+                Tab five content
+            </div>
+            <div id="tab-six-panel" class="panel">
+                Tab six content
+            </div>
+            <div id="tab-seven-panel" class="panel">
+                Tab seven content
+            </div>
+            <div id="tab-eight-panel" class="panel">
+                Tab eight content
+            </div>
         </div>
+    </div>
 
+    <div class="outer-container flex justify-center m-4">
+        <h2 class="text-4xl font-bold">Top Priorities</h2>
     </div>
-    <div class="outer-container">
-        <h2>Cool Stuff Comin'</h2>
-    </div>
+
     <div class="container">
         <table class="table table-hover col dashboard-style table-dark">
             <thead>
@@ -93,5 +111,5 @@
                 </tr>
             </tbody>
     </div>
-
+   
 </body>

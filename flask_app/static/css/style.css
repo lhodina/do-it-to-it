@@ -14,7 +14,7 @@ body {
 
 .worko-tabs {
     margin: 20px;
-  	width: 80%;
+  	width: 95%;
   
     .state{
       position: absolute;
@@ -59,7 +59,11 @@ body {
 #tab-one:checked ~ .tabs #tab-one-label,
 #tab-two:checked ~ .tabs #tab-two-label,
 #tab-three:checked ~ .tabs #tab-three-label,
-#tab-four:checked ~ .tabs #tab-four-label{
+#tab-four:checked ~ .tabs #tab-four-label,
+#tab-five:checked ~ .tabs #tab-five-label,
+#tab-six:checked ~ .tabs #tab-six-label,
+#tab-seven:checked ~ .tabs #tab-seven-label,
+#tab-eight:checked ~ .tabs #tab-eight-label{
     background-color: #fff;
     cursor: default;
     border-left-color: #69be28;
@@ -68,7 +72,11 @@ body {
 #tab-one:checked ~ .tabs #tab-one-panel,
 #tab-two:checked ~ .tabs #tab-two-panel,
 #tab-three:checked ~ .tabs #tab-three-panel,
-#tab-four:checked ~ .tabs #tab-four-panel{
+#tab-four:checked ~ .tabs #tab-four-panel,
+#tab-five:checked ~ .tabs #tab-five-panel,
+#tab-six:checked ~ .tabs #tab-six-panel,
+#tab-seven:checked ~ .tabs #tab-seven-panel,
+#tab-eight:checked ~ .tabs #tab-eight-panel{
     display: block;
 }
 
@@ -89,23 +97,39 @@ body {
     #tab-two-label{order: 3;}
     #tab-three-label{order: 5;};
     #tab-four-label{order: 7;};
+    #tab-five-label{order: 9;};
+    #tab-six-label{order: 11;};
+    #tab-seven-label{order: 13;};
+    #tab-eight-label{order: 15;};
     #tab-one-panel{order: 2;}
     #tab-two-panel{order: 4;}
     #tab-three-panel{order: 6;}
     #tab-four-panel{ order: 8;}
+    #tab-five-panel{order: 10;}
+    #tab-six-panel{order: 12;}
+    #tab-seven-panel{order: 14;}
+    #tab-eight-panel{order: 16;}
   }
   
     #tab-one:checked ~ .tabs #tab-one-label,
     #tab-two:checked ~ .tabs #tab-two-label,
     #tab-three:checked ~ .tabs #tab-three-label,
-    #tab-four:checked ~ .tabs #tab-four-label{
+    #tab-four:checked ~ .tabs #tab-four-label,
+    #tab-five:checked ~ .tabs #tab-five-label,
+    #tab-six:checked ~ .tabs #tab-six-label,
+    #tab-seven:checked ~ .tabs #tab-seven-label,
+    #tab-eight:checked ~ .tabs #tab-eight-label{
       border-bottom: none;
     }
   
   #tab-one:checked ~ .tabs #tab-one-panel,
   #tab-two:checked ~ .tabs #tab-two-panel,
   #tab-three:checked ~ .tabs #tab-three-panel,
-  #tab-four:checked ~ .tabs #tab-four-panel{
+  #tab-four:checked ~ .tabs #tab-four-panel
+  #tab-five:checked ~ .tabs #tab-five-panel,
+  #tab-six:checked ~ .tabs #tab-six-panel,
+  #tab-seven:checked ~ .tabs #tab-seven-panel,
+  #tab-eight:checked ~ .tabs #tab-eight-panel{
     border-bottom: 1px solid #ccc;
   }
 }

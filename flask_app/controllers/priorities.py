@@ -37,3 +37,10 @@ def delete_priority(priority_id):
     data = {"id": priority_id}
     priority.Priority.destroy(data)
     return redirect("/dashboard")
+
+@app.route('/priority/edit/<int:id>')
+def edit_priority(id):
+    # if 'user_id' not in session:
+    #     return redirect('/')
+
+    return render_template('pedit.html',priority=priority.Priority.get_by_id({'id': id}))

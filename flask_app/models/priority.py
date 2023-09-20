@@ -25,25 +25,16 @@ class Priority:
     def get_by_id(cls,data):
         query = """
                 SELECT * FROM priorities
-                JOIN users on priorities.user_id = users.id
+                
                 WHERE priorities.id = %(id)s;
                 """
-        result = connectToMySQL(cls.db).query_db(query,data)
+        result = connectToMySQL(cls.DB).query_db(query,data)
         if not result:
             return False
 
         result = result[0]
         this_priority = cls(result)
-        user_data = {
-                "id": result['users.id'],
-                "first_name": result['first_name'],
-                "last_name": result['last_name'],
-                "email": result['email'],
-                "password": "",
-                "created_at": result['users.created_at'],
-                "updated_at": result['users.updated_at']
-        }
-        this_priority.creator = user.User(user_data)
+        
         return this_priority
 
     @classmethod

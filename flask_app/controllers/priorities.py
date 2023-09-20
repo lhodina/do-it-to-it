@@ -8,7 +8,7 @@ from flask_app.models import priority
 @app.route("/priorities", methods=["POST"])
 def add_priority():
     data = {
-        "user_id": request.form["user_id"],
+        "user_id": request.form["current_user"],
         "text": request.form["text"],
         "level": request.form["level"]
     }

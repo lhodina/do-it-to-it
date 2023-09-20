@@ -75,7 +75,7 @@
         <div class="flex justify-center">
             <div class="container m-4 p-2 border-4 border-slate-900 w-1/3 rounded-2xl shadow-xl">
                 <h2 class="flex justify-center text-4xl font-bold">Add Priority</h2>
-                <form action="/login" method="post" class="w-2/3">
+                <form action="/priorities" method="post" class="w-2/3">
                     <div class="form-group shadow-xl">
                         <label class="text-2xl font-bold" for="text">Description:</label>
                         <input type="textarea" class="form-control" id="text" placeholder="Enter description"
@@ -89,28 +89,30 @@
                             <option value="low">Low</option>
                         </select>
                     </div>
+                    <div>
+                        <input type="hidden" id="user_id" name="user_id" value="{{session.current_user.id}}">
+                    </div>
                     <button type="submit"
                         class="px-5 py-2.5 text-sm font-medium text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 shadow-xl">Add</button>
                 </form>
             </div>
         </div>
     </div>
+    <p>{{session.current_user.id}}</p>
 
     <div class="container">
         <table class="table table-hover col dashboard-style table-dark">
             <thead>
                 <tr>
                     <th>Priorities</th>
-                    <th>Tags</th>
                     <th>Priority Level</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody>
-                {% for item in all_priorities %}
+                {% for item in all_user_priorities %}
                 <tr>
                     <td> {{item.text}}</td>
-                    <td> Priority tags</td>
                     <td> {{item.level}}</td>
                     <td>
                         <a href="/dashboard" class="btn btn-success">Completed</a>

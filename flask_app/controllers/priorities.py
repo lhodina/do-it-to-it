@@ -2,7 +2,7 @@
 from flask import render_template, redirect, request, session
 from flask_app import app
 from flask_app.models import priority
-from flask_app.models import user
+
 
 
 @app.route("/priorities", methods=["POST"])
@@ -43,4 +43,4 @@ def edit_priority(id):
     # if 'user_id' not in session:
     #     return redirect('/')
 
-    return render_template('pedit.html',priority=priority.Priority.get_by_id({'id': id}))
+    return render_template('dashboard.html',priority=priority.Priority.get_by_id({'id': id}))

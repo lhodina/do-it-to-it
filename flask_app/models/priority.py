@@ -19,15 +19,16 @@ class Priority:
         return connectToMySQL(cls.DB).query_db(query, data)
 
     @classmethod
-    def get_all_priorities(cls):
-        all_priorities = []
+    def get_all_user_priorities(cls, data):
+        all_user_priorities = []
         query = """
-        SELECT * FROM priorities;
+        SELECT * FROM priorities
+        WHERE(user_id = %(id)s);
         """
-        results = connectToMySQL(cls.DB).query_db(query)
+        results = connectToMySQL(cls.DB).query_db(query, data)
         for result in results:
-            all_priorities.append(result)
-        return all_priorities
+            all_user_priorities.append(result)
+        return all_user_priorities
 
     @classmethod
     def update(cls,form_data):

@@ -13,8 +13,8 @@ class Priority:
     @classmethod
     def save(cls, data):
         query = """
-        INSERT INTO priorities(text, level, user_id)
-        VALUES ( %(text)s, %(level)s, %(user_id)s)
+            INSERT INTO priorities(text, level, user_id)
+            VALUES ( %(text)s, %(level)s, %(user_id)s)
         """
         return connectToMySQL(cls.DB).query_db(query, data)
 
@@ -22,8 +22,8 @@ class Priority:
     def get_all_user_priorities(cls, data):
         all_user_priorities = []
         query = """
-        SELECT * FROM priorities
-        WHERE(user_id = %(id)s);
+            SELECT * FROM priorities
+            WHERE(user_id = %(id)s);
         """
         results = connectToMySQL(cls.DB).query_db(query, data)
         for result in results:
@@ -35,8 +35,7 @@ class Priority:
         query = """
                 UPDATE priorities
                 SET text = %(text)s,
-                level = %(level)s,
-                updated_at = now()
+                level = %(level)s
                 WHERE id = %(id)s;
                 """
         return connectToMySQL(cls.DB).query_db(query,form_data)

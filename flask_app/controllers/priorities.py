@@ -19,3 +19,21 @@ def add_priority():
     # session.pop("data")
     priority.Priority.save(data)
     return redirect("/dashboard")
+
+
+@app.route("/priorities/<int:priority_id>/update", methods=["POST"])
+def update_priority(priority_id):
+    data = {
+        "id": priority_id,
+        "text": request.form["text"],
+        "level": request.form["level"]
+    }
+    priority.Priority.update(data)
+    return redirect("/dashboard")
+
+
+@app.route("/priorities/<int:priority_id>/delete")
+def delete_priority(priority_id):
+    data = {"id": priority_id}
+    priority.Priority.destroy(data)
+    return redirect("/dashboard")

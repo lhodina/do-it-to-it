@@ -20,25 +20,20 @@ def add_priority():
     priority.Priority.save(data)
     return redirect("/dashboard")
 
-@app.route('/priority/edit/<int:id>', methods=['POST'])
-def process_edit_priority(id):
-    if 'user_id' not in session:
-        return redirect('/')
-    if not priority.Priority.validate_priority(request.form):
-        return redirect(f'/priority/edit/{id}')
 
+@app.route("/priorities/<int:priority_id>/update", methods=["POST"])
+def update_priority(priority_id):
     data = {
-        'id': id,
-        'text': request.form['text'],
-        'level': request.form['level'],
+        "id": priority_id,
+        "text": request.form["text"],
+        "level": request.form["level"]
     }
     priority.Priority.update(data)
-    return redirect('/dashboard')
+    return redirect("/dashboard")
 
-@app.route('/priority/destroy/<int:id>')
-def destroy_priority(id):
-    if 'user_id' not in session:
-        return redirect('/')
 
-    priority.Priority.destroy({'id':id})
-    return redirect('/dashboard')
+@app.route("/priorities/<int:priority_id>/delete")
+def delete_priority(priority_id):
+    data = {"id": priority_id}
+    priority.Priority.destroy(data)
+    return redirect("/dashboard")

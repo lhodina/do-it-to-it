@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Dashboard</title>
 </head>
+
 <body>
     <div class='z-10 w-full h-[95px] flex justify-center items-center px-4 bg-transparent '>
 
@@ -28,52 +31,31 @@
     </div>
     <span class="flex justify-center text-4xl font-bold m-4">Welcome, {{ session['current_user']['first_name'] }}</span>
 
+    <div class="flex justify-center">
+        <h1 class="text-red-600 text-2xl">ADD Form</h1>
+    </div>
 
-    <div class="worko-tabs">
-        <input class="state" type="radio" title="tab-one" name="tabs-state" id="tab-one" checked />
-        <input class="state" type="radio" title="tab-two" name="tabs-state" id="tab-two" />
-        <input class="state" type="radio" title="tab-three" name="tabs-state" id="tab-three" />
-        <input class="state" type="radio" title="tab-four" name="tabs-state" id="tab-four" />
-        <input class="state" type="radio" title="tab-five" name="tabs-state" id="tab-five" />
-        <input class="state" type="radio" title="tab-six" name="tabs-state" id="tab-six" />
-        <input class="state" type="radio" title="tab-seven" name="tabs-state" id="tab-seven" />
-        <input class="state" type="radio" title="tab-eight" name="tabs-state" id="tab-eight" />
+    <div class="worko-tabs flex justify-center">
 
         <div class="tabs flex-tabs">
-            <label for="tab-one" id="tab-one-label" class="tab font-bold">Technologies</label>
-            <label for="tab-two" id="tab-two-label" class="tab font-bold">Specializations</label>
-            <label for="tab-three" id="tab-three-label" class="tab font-bold">Industries</label>
-            <label for="tab-four" id="tab-four-label" class="tab font-bold">Companies</label>
-            <label for="tab-five" id="tab-five-label" class="tab font-bold">Locations</label>
-            <label for="tab-six" id="tab-six-label" class="tab font-bold">Interviews</label>
-            <label for="tab-seven" id="tab-seven-label" class="tab font-bold">Jobs</label>
-            <label for="tab-eight" id="tab-eight-label" class="tab font-bold">Contacts</label>
+            {% for item in all_categories %}
+            <input class="state" type="radio" title="tab-{{item.id}}" name="tabs-state" id="tab-{{item.id}}" checked />
+            {% endfor %}
 
+            <div class="tabs flex-tabs">
+                {% for item in all_categories %}
+                <label for="tab-{{item.id}}" id="tab-{{item.id}}-label" class="tab font-bold">{{item.name}}</label>
+                {% endfor %}
 
-            <div id="tab-one-panel" class="panel active">
-              <h3>Responsive CSS Tabs - Flexbox</h3>
-              <p>CSS only tabs built using flexbox, when the viewport drops below 600px wide the tabs turn into an accordion by chaging the flex order of the elements.  Will need to alter css if more tabs are added.  each tab could be a seperate list of items </p>
-            </div>
-            <div id="tab-two-panel" class="panel">
-                Tab two content
-            </div>
-            <div id="tab-three-panel" class="panel">
-                Tab three content
-            </div>
-            <div id="tab-four-panel" class="panel">
-                Tab four content
-            </div>
-            <div id="tab-five-panel" class="panel">
-                Tab five content
-            </div>
-            <div id="tab-six-panel" class="panel">
-                Tab six content
-            </div>
-            <div id="tab-seven-panel" class="panel">
-                Tab seven content
-            </div>
-            <div id="tab-eight-panel" class="panel">
-                Tab eight content
+                {% for item in all_categories %}
+                <div id="tab-{{item.id}}-panel" class="panel active">
+                    {% for tags in all_tags%}
+                    {% if( item.id == tags.category_id)%}
+                    <button class="btn btn-outline-primary ">{{tags.name}}</button>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+                {% endfor %}
             </div>
         </div>
     </div>
@@ -82,22 +64,24 @@
     <div>
         <div class="flex justify-center">
             <div class="container m-4 p-2 border-4 border-slate-900 w-1/3 rounded-2xl shadow-xl">
-            <h2 class="flex justify-center text-3xl font-bold">Add Priority</h2>
-            <form action="/login" method="post" class="w-2/3">
-                <div class="form-group shadow-xl">
-                    <label class="text-2xl font-bold" for="text">Description:</label>
-                    <input type="textarea" class="form-control" id="text" placeholder="Enter description" name="text">
-                </div>
-                <div class="form-group shadow-xl">
-                    <label class="text-2xl font-bold" for="level">Level:</label>
-                    <select name="level" id="level">
-                        <option value="high">High</option>
-                        <option value="medium">Medium</option>
-                        <option value="low">Low</option>
-                      </select>
-                </div>
-                <button type="submit" class="px-5 py-2.5 text-sm font-medium text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 shadow-xl">Add</button>
-            </form>
+                <h2 class="flex justify-center text-4xl font-bold">Add Priority</h2>
+                <form action="/login" method="post" class="w-2/3">
+                    <div class="form-group shadow-xl">
+                        <label class="text-2xl font-bold" for="text">Description:</label>
+                        <input type="textarea" class="form-control" id="text" placeholder="Enter description"
+                            name="text">
+                    </div>
+                    <div class="form-group shadow-xl">
+                        <label class="text-2xl font-bold" for="level">Level:</label>
+                        <select name="level" id="level">
+                            <option value="high">High</option>
+                            <option value="medium">Medium</option>
+                            <option value="low">Low</option>
+                        </select>
+                    </div>
+                    <button type="submit"
+                        class="px-5 py-2.5 text-sm font-medium text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 shadow-xl">Add</button>
+                </form>
             </div>
         </div>
     </div>
@@ -115,16 +99,17 @@
                 </tr>
             </thead>
             <tbody>
+                {% for item in all_priorities %}
                 <tr>
-                    <td> Priority text</td>
+                    <td> {{item.text}}</td>
                     <td> Priority tags</td>
-                    <td> Priority level</td>
-                    <td >
+                    <td> {{item.level}}</td>
+                    <td>
                         <a href="/dashboard" class="btn btn-success">Completed</a>
                     </td>
-
                 </tr>
+                {% endfor %}
             </tbody>
     </div>
-   
+
 </body>

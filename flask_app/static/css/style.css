@@ -1,136 +1,194 @@
-
 /* Android 2.3 :checked fix */
 @keyframes fake {
-    from {
-        opacity: 1;
-    }
-    to {
-        opacity: 1;
-    }
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
-body {        
-    animation: fake 1s infinite;
+
+body {
+  animation: fake 1s infinite;
 }
 
 .worko-tabs {
-    margin: 20px;
-  	width: 95%;
-  
-    .state{
-      position: absolute;
-      left: -10000px;
+  margin: 20px;
+  width: 95%;
+
+  .state {
+    position: absolute;
+    left: -10000px;
+  }
+
+  .flex-tabs {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    .tab {
+      flex-grow: 1;
+      max-height: 40px;
     }
-  
-    .flex-tabs{
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-        
-        .tab{
-          flex-grow: 1;
-          max-height: 40px;
-        }
-      
-        .panel {
-          background-color: #fff;
-          padding: 20px;
-          min-height: 300px;
-          display: none;
-          width: 100%;
-          flex-basis: auto;
+
+    .panel {
+      background-color: #fff;
+      padding: 20px;
+      min-height: 100px;
+      display: none;
+      width: 100%;
+      flex-basis: auto;
+    }
+  }
+
+  .tab {
+    display: inline-block;
+    padding: 10px;
+    vertical-align: top;
+    background-color: #eee;
+    cursor: hand;
+    cursor: pointer;
+    border-left: 10px solid #ccc;
+
+    &:hover {
+      background-color: #fff;
+    }
+  }
+}
+
+#tab-1:checked~.tabs #tab-1-label,
+#tab-2:checked~.tabs #tab-2-label,
+#tab-3:checked~.tabs #tab-3-label,
+#tab-4:checked~.tabs #tab-4-label,
+#tab-5:checked~.tabs #tab-5-label,
+#tab-6:checked~.tabs #tab-6-label,
+#tab-7:checked~.tabs #tab-7-label,
+#tab-8:checked~.tabs #tab-8-label {
+  background-color: #fff;
+  cursor: default;
+  border-left-color: #69be28;
+}
+
+#tab-1:checked~.tabs #tab-1-panel,
+#tab-2:checked~.tabs #tab-2-panel,
+#tab-3:checked~.tabs #tab-3-panel,
+#tab-4:checked~.tabs #tab-4-panel,
+#tab-5:checked~.tabs #tab-5-panel,
+#tab-6:checked~.tabs #tab-6-panel,
+#tab-7:checked~.tabs #tab-7-panel,
+#tab-8:checked~.tabs #tab-8-panel {
+  display: block;
+}
+
+@media (max-width: 600px) {
+  .flex-tabs {
+    flex-direction: column;
+
+    .tab {
+      background: #fff;
+      border-bottom: 1px solid #ccc;
+
+      &:last-of-type {
+        border-bottom: none;
       }
     }
 
-    .tab {
-      display: inline-block;
-      padding: 10px;
-      vertical-align: top;
-      background-color: #eee;
-      cursor: hand;
-      cursor: pointer;
-      border-left: 10px solid #ccc;
-      
-        &:hover{
-          background-color: #fff;
-        }
-    }  
-}
-
-#tab-one:checked ~ .tabs #tab-one-label,
-#tab-two:checked ~ .tabs #tab-two-label,
-#tab-three:checked ~ .tabs #tab-three-label,
-#tab-four:checked ~ .tabs #tab-four-label,
-#tab-five:checked ~ .tabs #tab-five-label,
-#tab-six:checked ~ .tabs #tab-six-label,
-#tab-seven:checked ~ .tabs #tab-seven-label,
-#tab-eight:checked ~ .tabs #tab-eight-label{
-    background-color: #fff;
-    cursor: default;
-    border-left-color: #69be28;
-}
-
-#tab-one:checked ~ .tabs #tab-one-panel,
-#tab-two:checked ~ .tabs #tab-two-panel,
-#tab-three:checked ~ .tabs #tab-three-panel,
-#tab-four:checked ~ .tabs #tab-four-panel,
-#tab-five:checked ~ .tabs #tab-five-panel,
-#tab-six:checked ~ .tabs #tab-six-panel,
-#tab-seven:checked ~ .tabs #tab-seven-panel,
-#tab-eight:checked ~ .tabs #tab-eight-panel{
-    display: block;
-}
-
-@media (max-width: 600px){
-  .flex-tabs{
-    flex-direction: column;
-    
-    .tab{
-      background: #fff;
-      border-bottom: 1px solid #ccc;
-      
-        &:last-of-type{
-          border-bottom: none;
-        }
+    #tab-1-label {
+      order: 1;
     }
-    
-    #tab-one-label{order:1;}
-    #tab-two-label{order: 3;}
-    #tab-three-label{order: 5;};
-    #tab-four-label{order: 7;};
-    #tab-five-label{order: 9;};
-    #tab-six-label{order: 11;};
-    #tab-seven-label{order: 13;};
-    #tab-eight-label{order: 15;};
-    #tab-one-panel{order: 2;}
-    #tab-two-panel{order: 4;}
-    #tab-three-panel{order: 6;}
-    #tab-four-panel{ order: 8;}
-    #tab-five-panel{order: 10;}
-    #tab-six-panel{order: 12;}
-    #tab-seven-panel{order: 14;}
-    #tab-eight-panel{order: 16;}
+
+    #tab-2-label {
+      order: 3;
+    }
+
+    #tab-3-label {
+      order: 5;
+    }
+
+    ;
+
+    #tab-4-label {
+      order: 7;
+    }
+
+    ;
+
+    #tab-5-label {
+      order: 9;
+    }
+
+    ;
+
+    #tab-6-label {
+      order: 11;
+    }
+
+    ;
+
+    #tab-7-label {
+      order: 13;
+    }
+
+    ;
+
+    #tab-8-label {
+      order: 15;
+    }
+
+    ;
+
+    #tab-1-panel {
+      order: 2;
+    }
+
+    #tab-2-panel {
+      order: 4;
+    }
+
+    #tab-3-panel {
+      order: 6;
+    }
+
+    #tab-4-panel {
+      order: 8;
+    }
+
+    #tab-5-panel {
+      order: 10;
+    }
+
+    #tab-6-panel {
+      order: 12;
+    }
+
+    #tab-7-panel {
+      order: 14;
+    }
+
+    #tab-8-panel {
+      order: 16;
+    }
   }
-  
-    #tab-one:checked ~ .tabs #tab-one-label,
-    #tab-two:checked ~ .tabs #tab-two-label,
-    #tab-three:checked ~ .tabs #tab-three-label,
-    #tab-four:checked ~ .tabs #tab-four-label,
-    #tab-five:checked ~ .tabs #tab-five-label,
-    #tab-six:checked ~ .tabs #tab-six-label,
-    #tab-seven:checked ~ .tabs #tab-seven-label,
-    #tab-eight:checked ~ .tabs #tab-eight-label{
-      border-bottom: none;
-    }
-  
-  #tab-one:checked ~ .tabs #tab-one-panel,
-  #tab-two:checked ~ .tabs #tab-two-panel,
-  #tab-three:checked ~ .tabs #tab-three-panel,
-  #tab-four:checked ~ .tabs #tab-four-panel
-  #tab-five:checked ~ .tabs #tab-five-panel,
-  #tab-six:checked ~ .tabs #tab-six-panel,
-  #tab-seven:checked ~ .tabs #tab-seven-panel,
-  #tab-eight:checked ~ .tabs #tab-eight-panel{
+
+  #tab-1:checked~.tabs #tab-1-label,
+  #tab-2:checked~.tabs #tab-2-label,
+  #tab-3:checked~.tabs #tab-3-label,
+  #tab-4:checked~.tabs #tab-4-label,
+  #tab-5:checked~.tabs #tab-5-label,
+  #tab-6:checked~.tabs #tab-6-label,
+  #tab-7:checked~.tabs #tab-7-label,
+  #tab-8:checked~.tabs #tab-8-label {
+    border-bottom: none;
+  }
+
+  #tab-1:checked~.tabs #tab-1-panel,
+  #tab-2:checked~.tabs #tab-2-panel,
+  #tab-3:checked~.tabs #tab-3-panel,
+  #tab-4:checked~.tabs #tab-4-panel #tab-5:checked~.tabs #tab-5-panel,
+  #tab-6:checked~.tabs #tab-6-panel,
+  #tab-7:checked~.tabs #tab-7-panel,
+  #tab-8:checked~.tabs #tab-8-panel {
     border-bottom: 1px solid #ccc;
   }
 }
-

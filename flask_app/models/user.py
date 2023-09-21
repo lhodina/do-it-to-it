@@ -4,7 +4,8 @@ from flask_bcrypt import Bcrypt
 import re
 
 from flask_app import app
-# bcrypt = Bcrypt(app)
+bcrypt = Bcrypt(app)
+import re
 
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 PASSWORD_REGEX = re.compile(r'^(?=.*[A-Z])(?=.*\d)[a-zA-Z\d\-\#\$\.\%\&\*\@\!]{8,}$')
@@ -105,9 +106,9 @@ class User:
                 is_valid = False
             else:
                 current_user = result[0]
-            # if current_user and not bcrypt.check_password_hash(current_user["password"], data["password"]):
-            #     flash("Incorrect password")
-            #     is_valid = False
+            if current_user and not bcrypt.check_password_hash(current_user["password"], data["password"]):
+                flash("Incorrect password")
+                is_valid = False
         if not data["password"]:
             flash("Password required")
             is_valid = False

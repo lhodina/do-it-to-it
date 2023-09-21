@@ -4,7 +4,7 @@ from flask_bcrypt import Bcrypt
 from flask_app import app
 from flask_app.models import user
 
-# bcrypt = Bcrypt(app)
+bcrypt = Bcrypt(app)
 
 # Get both forms on the home page
 @app.route("/")
@@ -29,8 +29,8 @@ def register_user():
         return redirect("/")
     # If you made it this far, congratulations -- remove all form input data
     session.clear()
-    # pw_hash = bcrypt.generate_password_hash(request.form['password'])
-    # data["password"] = pw_hash
+    pw_hash = bcrypt.generate_password_hash(request.form['password'])
+    data["password"] = pw_hash
     user_id = user.User.save(data)
     # Get user by id and save to session to keep the user logged in
     current_user = user.User.get_one(user_id)[0]

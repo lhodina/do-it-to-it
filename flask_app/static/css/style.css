@@ -65,7 +65,7 @@ body {
 #tab-6:checked~.tabs #tab-6-label,
 #tab-7:checked~.tabs #tab-7-label,
 #tab-8:checked~.tabs #tab-8-label {
-  background-color: #fff;
+  background-color: #69be28;
   cursor: default;
   border-left-color: #69be28;
 }

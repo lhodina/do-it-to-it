@@ -10,23 +10,28 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
     <script src="https://cdn.tailwindcss.com"></script>
     <title>View Tag</title>
+    <style>
+        a:hover {
+            color:rgb(44, 179, 44);
+        }
+        </style>
 </head>
 
-<body>
-    <div class='z-10 w-full h-[95px] flex justify-center items-center px-4 bg-transparent diagonal-gradient'>
+<body class="diagonal-gradient text-light">
+    <div class='z-10 w-full h-[95px] flex justify-center items-center px-4 bg-transparent '>
 
         <ul class='flex'>
 
             <li
-                class='text-2xl p-2 mx-3 bg-sky-400 rounded-full hover:rounded-full hover:border-2 hover:border-[#00a6be] text-light'>
-                <a href="/dashboard">Dashboard</a>
+                class='text-1xl p-3 mx-3  rounded-full hover:rounded-full hover:border-2 hover:border-[#00a6be] text-light font-bold' style="background-color:rgb(44, 179, 44)">
+                <a href="/dashboard">DASHBOARD</a>
             </li>
-            <div class='text-black text-5xl font-bold mx-3'>
+            <div class='text-light text-5xl font-bold mx-3 heading'>
                 DO IT TO IT
             </div>
             <li
-                class='text-2xl p-2 mx-3 bg-sky-400 rounded-full hover:rounded-full hover:border-2 hover:border-[#00a6be] text-light'>
-                <a href="/logout">Logout</a>
+                class='text-1xl p-3 mx-3 rounded-full hover:rounded-full hover:border-2 hover:border-[#00a6be] text-light font-bold' style="background-color:rgb(44, 179, 44)">
+                <a href="/logout">LOGOUT</a>
             </li>
 
         </ul>

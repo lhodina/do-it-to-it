@@ -31,3 +31,14 @@ class Link:
         for result in results:
             all_links.append(result)
         return all_links
+
+    @classmethod
+    def get_all_link_types(cls, data):
+        all_link_types = []
+        query = """
+        SELECT * FROM link_types;
+        """
+        results = connectToMySQL(cls.DB).query_db(query, data)
+        for result in results:
+            all_link_types.append(result)
+        return all_link_types

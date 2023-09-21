@@ -21,10 +21,10 @@ def add_priority():
     return redirect("/dashboard")
 
 
-@app.route("/priorities/<int:priority_id>/update", methods=["POST"])
-def update_priority(priority_id):
+@app.route("/priorities/update", methods=["POST"])
+def update_priority():
     data = {
-        "id": priority_id,
+        "id": request.form["prio_select"],
         "text": request.form["text"],
         "level": request.form["level"]
     }

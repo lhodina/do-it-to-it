@@ -27,6 +27,6 @@ def get_tag_page(tag_id):
         #     print("tag_priority.id: ", tag_priority.id)
         #     print("tag_priority.text: ", tag_priority.text)
         #     print("tag_priority.level: ", tag_priority.level)
-        return render_template("tag.html", current_tag=current_tag, tag_links=tag_links, tag_priorities=tag_priorities)
+        return render_template("view.html", current_tag=current_tag, tag_links=tag_links, tag_priorities=tag_priorities)
     else:
         return redirect("/")

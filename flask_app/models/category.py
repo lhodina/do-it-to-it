@@ -27,3 +27,23 @@ class Category:
         for result in results:
             all_categories.append(result)
         return all_categories
+
+    @classmethod
+    def get_one(cls, data):
+        query = """
+        SELECT * FROM categories
+        WHERE categories.id = %(id)s;
+        """
+        result = connectToMySQL(cls.DB).query_db(query, data)
+        print("***** result: ", result)
+        # current_show_data = {
+        #     "id": result["id"],
+        #     "title": result["title"],
+        #     "network": result["network"],
+        #     "release_date": result["release_date"],
+        #     "description": result["description"],
+        #     "created_at": result["created_at"],
+        #     "updated_at": result["updated_at"],
+        #     "user_id": result["user_id"]
+        # }
+        return result

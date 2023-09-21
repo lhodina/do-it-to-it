@@ -20,12 +20,12 @@ class Priority:
             VALUES ( %(text)s, %(level)s, %(user_id)s)
         """
         return connectToMySQL(cls.DB).query_db(query, data)
-    
+
     @classmethod
     def get_by_id(cls,data):
         query = """
                 SELECT * FROM priorities
-                
+
                 WHERE priorities.id = %(id)s;
                 """
         result = connectToMySQL(cls.DB).query_db(query,data)
@@ -34,7 +34,7 @@ class Priority:
 
         result = result[0]
         this_priority = cls(result)
-        
+
         return this_priority
 
     @classmethod
@@ -66,7 +66,7 @@ class Priority:
                 WHERE id = %(id)s;
                 """
         return connectToMySQL(cls.DB).query_db(query,data)
-    
+
     @staticmethod
     def validate_priority(form_data):
         is_valid = True
@@ -78,3 +78,11 @@ class Priority:
             flash("must have priority level.")
             is_valid = False
         return is_valid
+
+    @classmethod
+    def add_tag(cls, data):
+        query = """
+            INSERT INTO tag_priorities(priority_id, tag_id)
+            VALUES ( %(priority_id)s, %(tag_id)s)
+        """
+        return connectToMySQL(cls.DB).query_db(query, data)

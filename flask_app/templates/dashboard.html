@@ -35,10 +35,17 @@
             {% for item in all_categories %}
             <input class="state" type="radio" title="tab-{{item.id}}" name="tabs-state" id="tab-{{item.id}}" checked />
             {% endfor %}
+            {% for link in all_link_types %}
+            <input class="state" type="radio" title="tab-{{link.id+5}}" name="tabs-state" id="tab-{{link.id+5}}"
+                checked />
+            {% endfor %}
 
             <div class="tabs flex-tabs">
                 {% for item in all_categories %}
                 <label for="tab-{{item.id}}" id="tab-{{item.id}}-label" class="tab font-bold">{{item.name}}</label>
+                {% endfor %}
+                {% for link in all_link_types %}
+                <label for="tab-{{link.id+5}}" id="tab-{{link.id+5}}-label" class="tab font-bold">{{link.name}}</label>
                 {% endfor %}
 
                 {% for item in all_categories %}
@@ -46,6 +53,15 @@
                     {% for tags in all_tags%}
                     {% if( item.id == tags.category_id)%}
                     <button class="btn btn-outline-primary ">{{tags.name}}</button>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+                {% endfor %}
+                {% for link in all_link_types %}
+                <div id="tab-{{link.id+5}}-panel" class="panel active">
+                    {% for links in all_user_links%}
+                    {% if( link.id == links.link_type_id) %}
+                    <p><a href="{{links.url}}">{{links.text}}</a></p>
                     {% endif %}
                     {% endfor %}
                 </div>
@@ -92,7 +108,7 @@
             <tbody>
                 {% for item in all_user_priorities %}
                 <tr>
-                    <td> {{item.text}}</td>
+                    <td><a href=""> {{item.text}} </a></td>
                     <td>
                         {% if (item.level) == 3%}
                         High
@@ -106,7 +122,7 @@
 
                     </td>
                     <td>
-                        <a href="/dashboard" class="btn btn-success">Completed</a>
+                        <a href="/priorities/{{item.id}}/delete" class="btn btn-success">Completed</a>
                     </td>
                 </tr>
                 {% endfor %}

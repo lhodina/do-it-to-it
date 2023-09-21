@@ -61,7 +61,10 @@
                 <div id="tab-{{link.id+5}}-panel" class="panel active">
                     {% for links in all_user_links%}
                     {% if( link.id == links.link_type_id) %}
-                    <p><a href="{{links.url}}">{{links.text}}</a></p>
+                    <p class="">
+                        <a href="{{links.url}}">{{links.text}}</a>
+                        | {{links.description}}
+                    </p>
                     {% endif %}
                     {% endfor %}
                 </div>

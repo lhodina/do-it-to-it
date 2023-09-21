@@ -1,12 +1,3 @@
-
-UPDATE priorities
-SET text = 'Laszlo Jamf',
-level = 3
-WHERE id = 4;
-
-SELECT * FROM priorities;
-
-
 -- INSERT INTO users(first_name, last_name, email, password)
 -- VALUES("Larry", "David", "LDav1d@gmail.com", "LDav1d@gmail.com");
 
@@ -70,6 +61,7 @@ SELECT * FROM priorities;
 -- (1, 6),
 -- (2, 5),
 -- (2, 9),
--- (3, 1);
+-- (3, 1),
+-- (3, 9);
 
 -- SELECT * FROM users;

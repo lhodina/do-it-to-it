@@ -16,21 +16,28 @@
     <div class='z-10 w-full h-[95px] flex justify-center items-center px-4 bg-transparent '>
         <ul class='flex'>
             <li
-                class='text-2xl p-2 mx-3 bg-sky-400 rounded-full hover:rounded-full hover:border-2 hover:border-[#00a6be] text-light'>
-                <a href="/dashboard">Dashboard</a>
+                class='text-1xl p-3 mx-3  rounded-full hover:rounded-full hover:border-2 hover:border-[#00a6be] text-light font-bold' style="background-color:rgb(44, 179, 44)">
+                <a href="/dashboard">DASHBOARD</a>
             </li>
-            <div class='text-black text-5xl font-bold mx-3'>
+            <div class='text-light text-5xl font-bold mx-3 heading'>
                 DO IT TO IT
             </div>
             <li
-                class='text-2xl p-2 mx-3 bg-sky-400 rounded-full hover:rounded-full hover:border-2 hover:border-[#00a6be] text-light'>
-                <a href="/logout">Logout</a>
+                class='text-1xl p-3 mx-3 rounded-full hover:rounded-full hover:border-2 hover:border-[#00a6be] text-light font-bold' style="background-color:rgb(44, 179, 44)">
+                <a href="/logout">LOGOUT</a>
             </li>
         </ul>
     </div>
-    <span class="flex justify-center text-4xl font-bold m-4">Welcome, {{ session['current_user']['first_name'] }}</span>
+    <span class="flex justify-center text-4xl font-bold m-4 text-light">Welcome, {{ session['current_user']['first_name'] }}</span>
     <div class="worko-tabs flex justify-center">
-
+        <div>{% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p class="alert alert-danger card invalid-feedback mx-0 mb-0 p-1 text-center">{{message}}</p>
+                {% endfor %}
+            {% endif %}
+            {% endwith %}
+        </div>
         <div class="tabs flex-tabs">
             {% for item in all_categories %}
             <input class="state" type="radio" title="tab-{{item.id}}" name="tabs-state" id="tab-{{item.id}}" checked />
@@ -63,7 +70,7 @@
                 <div id="tab-{{link.id+5}}-panel" class="panel active">
                     {% for links in all_user_links%}
                     {% if( link.id == links.link_type_id) %}
-                    <p class="">
+                    <p class="text-light">
                         {{links.description}}
                         <a href="{{links.url}}">| {{links.text}}</a>
                     </p>
@@ -78,8 +85,8 @@
         <div class="flex justify-center">
 
 
-            <div class="container m-4 p-2 border-4 border-slate-900 w-1/3 rounded-2xl shadow-xl">
-                <h2 class="flex justify-center text-4xl font-bold">Add Priority</h2>
+            <div class="container m-4 p-2 border-4 border-success w-1/3 rounded-2xl shadow-xl">
+                <h2 class="flex justify-center text-4xl font-bold text-light">Add Priority</h2>
                 <form action="/priorities" method="post" class="w-2/3">
 
                     <div class="form-group shadow-xl">
@@ -101,13 +108,35 @@
                         class="px-5 py-2.5 text-sm font-medium text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 shadow-xl">Add</button>
                 </form>
             </div>
+            <div class="container m-4 p-2 border-4 border-slate-900 w-1/3 rounded-2xl shadow-xl">
+                <h2 class="flex justify-center text-4xl font-bold">Edit Priority </h2>
+                <form action="/priorities/{{priority_id}}/update" method="post" class="w-2/3">
+                    <div class="form-group shadow-xl">
+                        <label class="text-2xl font-bold" for="text">Description:</label>
+                        <input type="textarea" class="form-control" id="text"
+                            name="text">
+                    </div>
+                    <div class="form-group shadow-xl">
+                        <label class="text-2xl font-bold" for="level">Level:</label>
+                        <select name="level" id="level">
+                            <option value="3">High</option>
+                            <option value="2">Medium</option>
+                            <option value="1">Low</option>
+                            <option value="0">None</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit"
+                        class="px-5 py-2.5 text-sm font-medium text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 shadow-xl">Edit</button>
+                </form>
+            </div>
         </div>
     </div>
 
 
 
     <div class="container">
-        <table class="table table-hover col dashboard-style">
+        <table class="table table-hover col dashboard-style text-light">
             <thead>
                 <tr>
                     <th>Priorities</th>

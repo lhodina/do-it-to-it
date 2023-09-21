@@ -12,9 +12,9 @@
     <title>View Tag</title>
     <style>
         a:hover {
-            color:rgb(44, 179, 44);
+            color: rgb(44, 179, 44);
         }
-        </style>
+    </style>
 </head>
 
 <body class="diagonal-gradient text-light">
@@ -22,15 +22,15 @@
 
         <ul class='flex'>
 
-            <li
-                class='text-1xl p-3 mx-3  rounded-full hover:rounded-full hover:border-2 hover:border-[#00a6be] text-light font-bold' style="background-color:rgb(44, 179, 44)">
+            <li class='text-1xl p-3 mx-3  rounded-full hover:rounded-full hover:border-2 hover:border-[#00a6be] text-light font-bold'
+                style="background-color:rgb(44, 179, 44)">
                 <a href="/dashboard" class="navlinks">DASHBOARD</a>
             </li>
             <div class='text-light text-5xl font-bold mx-3 heading'>
                 DO IT TO IT
             </div>
-            <li
-                class='text-1xl p-3 mx-3 rounded-full hover:rounded-full hover:border-2 hover:border-[#00a6be] text-light font-bold' style="background-color:rgb(44, 179, 44)">
+            <li class='text-1xl p-3 mx-3 rounded-full hover:rounded-full hover:border-2 hover:border-[#00a6be] text-light font-bold'
+                style="background-color:rgb(44, 179, 44)">
                 <a href="/logout" class="navlinks">LOGOUT</a>
             </li>
 
@@ -43,13 +43,14 @@
         <div class="row">
             <div class="col-md-6 mt-5 p-3">
 
-                {{current_tag}}
+
 
                 <h1 class="font-weight-bold">My {{current_tag.name}} Articles</h1>
                 <hr class="mt-2">
 
-                <a href class="row ml-4">Article name</a>
-                <a href class="row ml-4">Article name</a>
+                {% for tags in tag_links %}
+                <a href="{{tags.url}}" class="row ml-4">{{tags.text}}</a>
+                {% endfor %}
 
                 <h1 class="font-weight-bold mt-5">My {{current_tag.name}} Priorities</h1>
                 <table class="mt-2 table table-hover table-striped col dashboard-style">
@@ -62,15 +63,25 @@
                         </tr>
                     </thead>
                     <tbody>
+                        {% for prios in tag_priorities %}
                         <tr>
-                            <td> Priority text</td>
-                            <td> Priority tags</td>
-                            <td> Priority level</td>
+                            <td> {{prios.text}} </td>
+                            <td> asdfadf</td>
+                            <td> {% if (prios.level) == 3%}
+                                High
+                                {% elif (prios.level) == 2 %}
+                                Medium
+                                {% elif (prios.level) == 1 %}
+                                Low
+                                {% else %}
+                                None
+                                {% endif %}</td>
                             <td>
-                                <a href="/dashboard" class="btn btn-success">Completed</a>
+                                <a href="/priorities/{{item.id}}/delete" class="btn btn-success">Completed</a>
                             </td>
-
                         </tr>
+                        {{prios.text}}
+                        {% endfor %}
                     </tbody>
                 </table>
                 <h1 class="font-weight-bold mt-5">My {{current_tag.name}} Contacts</h1>

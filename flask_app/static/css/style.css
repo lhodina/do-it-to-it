@@ -200,3 +200,20 @@ body {
   background: radial-gradient(circle, rgba(58,181,178,1) 0%, rgba(43,77,156,1) 95%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#3ab5b2",endColorstr="#2b4d9c",GradientType=1);
 }
+
+.navlinks {
+
+  overflow: hidden;
+  background-color: rgb(44, 179, 44);
+  background: linear-gradient(to right, midnightblue, midnightblue 50%, rgb(255, 255, 255) 50%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 100%;
+  background-position: 100%;
+  transition: background-position 275ms ease;
+  text-decoration: none; 
+  &:hover {
+    background-position: 0 100%;
+  }
+}

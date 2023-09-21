@@ -1,47 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
     <script src="https://cdn.tailwindcss.com"></script>
     <title>View Tag</title>
+    <style>
+        a:hover {
+            color:rgb(44, 179, 44);
+        }
+        </style>
 </head>
-<body>
-    <div class='z-10 w-full h-[95px] flex justify-center items-center px-4 bg-transparent diagonal-gradient'>
 
-            <ul class='flex'>
+<body class="diagonal-gradient text-light">
+    <div class='z-10 w-full h-[95px] flex justify-center items-center px-4 bg-transparent '>
 
-                <li class='text-2xl p-2 mx-3 bg-sky-400 rounded-full hover:rounded-full hover:border-2 hover:border-[#00a6be] text-light'>
-                    <a href="/">Dashboard</a>
-                </li>
-                <div class='text-black text-5xl font-bold mx-3'>
-                    DO IT TO IT
-                </div>
-                <li class='text-2xl p-2 mx-3 bg-sky-400 rounded-full hover:rounded-full hover:border-2 hover:border-[#00a6be] text-light'>
-                    <a href="/logout">Logout</a>
-                </li>
+        <ul class='flex'>
 
-            </ul>
+            <li
+                class='text-1xl p-3 mx-3  rounded-full hover:rounded-full hover:border-2 hover:border-[#00a6be] text-light font-bold' style="background-color:rgb(44, 179, 44)">
+                <a href="/dashboard" class="navlinks">DASHBOARD</a>
+            </li>
+            <div class='text-light text-5xl font-bold mx-3 heading'>
+                DO IT TO IT
+            </div>
+            <li
+                class='text-1xl p-3 mx-3 rounded-full hover:rounded-full hover:border-2 hover:border-[#00a6be] text-light font-bold' style="background-color:rgb(44, 179, 44)">
+                <a href="/logout" class="navlinks">LOGOUT</a>
+            </li>
+
+        </ul>
     </div>
 
 
     <div class="container">
-        <h2 class="mt-5 text-3xl font-bold">(TAG.NAME)</h2>
+        <h2 class="mt-5 text-3xl font-bold">{{current_tag.name}}</h2>
         <div class="row">
-            <div class="col-md-6 mt-5 p-3"  >
+            <div class="col-md-6 mt-5 p-3">
 
-            <h1 class="font-weight-bold">My (tag.name) Articles</h1>
-            <hr class="mt-2">
+                {{current_tag}}
+
+                <h1 class="font-weight-bold">My {{current_tag.name}} Articles</h1>
+                <hr class="mt-2">
 
                 <a href class="row ml-4">Article name</a>
                 <a href class="row ml-4">Article name</a>
 
-            <h1 class="font-weight-bold mt-5">My (tag.name) Priorities</h1>
+                <h1 class="font-weight-bold mt-5">My {{current_tag.name}} Priorities</h1>
                 <table class="mt-2 table table-hover table-striped col dashboard-style">
-                    <thead >
+                    <thead>
                         <tr>
                             <th>Priorities</th>
                             <th>Tags</th>
@@ -54,37 +66,39 @@
                             <td> Priority text</td>
                             <td> Priority tags</td>
                             <td> Priority level</td>
-                            <td >
+                            <td>
                                 <a href="/dashboard" class="btn btn-success">Completed</a>
                             </td>
-        
+
                         </tr>
                     </tbody>
                 </table>
-                    <h1 class="font-weight-bold mt-5">My (tag.name) Contacts</h1>
-                        <table class="mt-2 table table-hover table-striped table-bordered col dashboard-style" style="max-width: fit-content;">
-                            <thead >
-                                <tr>
-                                    <th>Contact Name</th>
-                                    <th>Link</th>
-                
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td> Name</td>
-                                    <td >
-                                        <a href >Link</a>
-                                    </td>
-                
-                                </tr>
-                            </tbody>
-                        </table>
+                <h1 class="font-weight-bold mt-5">My {{current_tag.name}} Contacts</h1>
+                <table class="mt-2 table table-hover table-striped table-bordered col dashboard-style"
+                    style="max-width: fit-content;">
+                    <thead>
+                        <tr>
+                            <th>Contact Name</th>
+                            <th>Link</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td> Name</td>
+                            <td>
+                                <a href>Link</a>
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
 
         </div>
-
-        </div>
-        </div>
+    </div>
 
 </body>
+
 </html>
